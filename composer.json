@@ -1,0 +1,17 @@
+{
+    "name": "rafacunha033/php-router",
+    "description": "A simple router made with php (no frameworks)",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rafacunha033",
+            "email": "rafacunha.prof033@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
