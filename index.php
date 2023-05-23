@@ -2,41 +2,31 @@
 
 include('vendor/autoload.php');
 
-class Router 
+use App\Router;
+
+class Controller 
 {
-    /** @var array */
-    protected array $routes;
 
-    public function __construct()
-    {}
-
-    protected function addRoute($method, $uri)
+    public function index()
     {
-        $this->routes[$method][] = [
-            'uri'    => $uri
-        ];
+        echo 'hi';
     }
 
-    public function get($uri)
+    public function home()
     {
-        $this->addRoute("GET", $uri);
+
     }
 
-    public function post($uri)
+    public function show()
     {
-        $this->addRoute("POST", $uri);
-    }
-
-    public function routes()
-    {
-        return $this->routes;
+        
     }
 }
 
 $router = new Router();
-$router->get('/');
-$router->get('/user');
-$router->post('/user');
+$router->get('/', 'Controller:index');
+$router->get('/user', 'Controller:home');
+$router->post('/user', 'Controller:show');
 
 echo "<pre>";
 print_r($router->routes());
