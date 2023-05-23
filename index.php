@@ -10,12 +10,21 @@ class Router
     public function __construct()
     {}
 
-    public function addRoute($method, $uri)
+    protected function addRoute($method, $uri)
     {
-        $this->routes[] = [
-            'method' => $method,
+        $this->routes[$method][] = [
             'uri'    => $uri
         ];
+    }
+
+    public function get($uri)
+    {
+        $this->addRoute("GET", $uri);
+    }
+
+    public function post($uri)
+    {
+        $this->addRoute("POST", $uri);
     }
 
     public function routes()
@@ -25,8 +34,10 @@ class Router
 }
 
 $router = new Router();
-$router->addRoute("GET", "/");
+$router->get('/');
+$router->get('/user');
+$router->post('/user');
 
 echo "<pre>";
-    var_dump($router->routes());
+print_r($router->routes());
 echo "</pre>";
